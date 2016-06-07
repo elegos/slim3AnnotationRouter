@@ -1,5 +1,5 @@
 {
-  "name": "giacomofurlan/slim3AnnotationRouter",
+  "name": "giacomofurlan/slim3annotation-router",
   "type": "library",
   "description": "Enables to define routes via the @Route(...) annotation",
   "keywords": ["route", "slim3", "annotation"],
