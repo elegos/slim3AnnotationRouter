@@ -2,7 +2,14 @@ Slim3 Annotation Router
 ---
 **by [Giacomo Furlan](http://giacomofurlan.name "Giacomo Furlan's website")**
 
-This library allows routes to be defined in Slim3 with annotations.
+This library allows routes to be defined in [Slim3](https://github.com/slimphp/Slim) with annotations instead of defining
+them programmatically (in a similar way Symfony does).
+
+---
+
+This is free software under the GNU GPL v3. See the licence file for more information.
+
+---
 
 Supported syntax:
 
@@ -30,6 +37,8 @@ This means that if there is a route placeholder `{myArgument}`, there MAY be a m
  If there is a method's argument called `$myArgument` there MUST be a `{myArgument}` route placeholder. Exceptions
  are the `ServerRequestInterface`, `ResponseInterface` and `ContainerInterface` arguments, that MAY be called with any variable name
  and are always the standard `$request`, `$response` and `$app->getContainer()` Slim3 objects.
+
+---
 
 Setup
 ---
