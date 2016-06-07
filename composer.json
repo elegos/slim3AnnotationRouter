@@ -1,0 +1,28 @@
+{
+  "name": "Slim3 Annotation Router",
+  "type": "library",
+  "description": "Enables to define routes via the @Route(...) annotation",
+  "keywords": ["route", "slim3", "annotation"],
+  "homepage": "https://github.com/elegos",
+  "license": "GNU GPL v3",
+  "authors": [
+    {
+      "name": "Giacomo Furlan",
+      "email": "giacomo@giacomofurlan.name",
+      "homepage": "http://giacomofurlan.name",
+      "role": "developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "giacomofurlan\\slim3AnnotationRouter": "src"
+    }
+  },
+  "require": {
+    "php": ">=5.6.6",
+    "slim/slim": "^3.0"
+  }
+  "repositories": {
+
+  }
+}
