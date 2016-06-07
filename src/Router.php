@@ -301,7 +301,7 @@ class Router
             $methods = $route->getMethods();
             $router = $this;
             
-            $this->app->map($methods, $route->getRoute(),
+            $mapped = $this->app->map($methods, $route->getRoute(),
                 function (ServerRequestInterface $request, ResponseInterface $response, $arguments) use ($route, $router) {
                     $constructorArgs = $router->getMethodArgumentsByArguments($route->getConstructorArguments());
                     $methodArgs =
@@ -312,6 +312,12 @@ class Router
                     $class->{$route->getClassMethod()}(...$methodArgs);
                 }
             );
+
+            $routeName = $route->getName();
+
+            if ($routeName) {
+                $mapped->setName($routeName);
+            }
         }
     }
 }
