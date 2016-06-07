@@ -15,7 +15,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "giacomofurlan\\slim3AnnotationRouter": "src"
+      "giacomofurlan\\slim3AnnotationRouter\\": "src"
     }
   },
   "require": {
