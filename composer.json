@@ -21,7 +21,7 @@
   "require": {
     "php": ">=5.6.6",
     "slim/slim": "^3.0"
-  }
+  },
   "repositories": {
     "type": "vcs",
     "url": "https://github.com/elegos/slim3AnnotationRouter.git"
