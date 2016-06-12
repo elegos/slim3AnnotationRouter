@@ -51,12 +51,14 @@ Setup
     $app = new \Slim\App(...);
 
     # define variables
-    new Router($app, $controllersDirectory, $cacheDir);
+    new Router($app, $controllersDirectory, $globalRoutePrefix, $cacheDir);
 
     $app->run();
 
 `$controllersDirectory` can either be a string, or an array of strings. You can thus define multiple controller
 directories, if needed. Subdirectories will be scanned automatically.
+
+`$globalRoutePrefix` is optional, default `''`. If set, a global route prefix will be applied to all the parsed routes.
 
 `$cacheDir` is optional, default `null`. If set, cache files will be generated, so that the second time
 the app is loaded it won't have to scan the directories again avoiding reflection classes. Cache is written again every
