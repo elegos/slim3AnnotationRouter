@@ -31,6 +31,8 @@ class Router
     private $app;
     /** @var string[] $controllersDirectory */
     private $controllersDirectory;
+    /** @var string $globalRoutePrefix */
+    private $globalRoutePrefix;
     /** @var string $cacheDirectory */
     private $cacheDirectory;
 
@@ -38,12 +40,14 @@ class Router
      * Router constructor.
      * @param App $app
      * @param string|string[] $controllersDirectory
+     * @param string $globalRoutePrefix used to give a global URI prefix
      * @param string|null $cacheDirectory if null, cache is disabled
      */
-    public function __construct(App $app, $controllersDirectory, $cacheDirectory = null)
+    public function __construct(App $app, $controllersDirectory, $globalRoutePrefix = '', $cacheDirectory = null)
     {
         $this->app = $app;
         $this->controllersDirectory = is_array($controllersDirectory) ? $controllersDirectory : [$controllersDirectory];
+        $this->globalRoutePrefix = $globalRoutePrefix;
         $this->cacheDirectory = $cacheDirectory;
 
         $routes = $this->getRoutes();
@@ -301,7 +305,7 @@ class Router
             $methods = $route->getMethods();
             $router = $this;
             
-            $mapped = $this->app->map($methods, $route->getRoute(),
+            $mapped = $this->app->map($methods, $this->globalRoutePrefix . $route->getRoute(),
                 function (ServerRequestInterface $request, ResponseInterface $response, $arguments) use ($route, $router) {
                     $constructorArgs = $router->getMethodArgumentsByArguments($route->getConstructorArguments());
                     $methodArgs =
