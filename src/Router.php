@@ -313,7 +313,7 @@ class Router
 
                     $class = $route->getClass();
                     $class = new $class(...$constructorArgs);
-                    $class->{$route->getClassMethod()}(...$methodArgs);
+                    return $class->{$route->getClassMethod()}(...$methodArgs);
                 }
             );
 
