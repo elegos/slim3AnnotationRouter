@@ -35,20 +35,24 @@ class Router
     private $globalRoutePrefix;
     /** @var string $cacheDirectory */
     private $cacheDirectory;
+    /** @var string $controllersSuffix */
+    private $controllersSuffix;
 
     /**
      * Router constructor.
      * @param App $app
      * @param string|string[] $controllersDirectory
      * @param string $globalRoutePrefix used to give a global URI prefix
+     * @param string $controllersSuffix
      * @param string|null $cacheDirectory if null, cache is disabled
      */
-    public function __construct(App $app, $controllersDirectory, $globalRoutePrefix = '', $cacheDirectory = null)
+    public function __construct(App $app, $controllersDirectory, $globalRoutePrefix = '', $controllersSuffix = 'Controller', $cacheDirectory = null)
     {
         $this->app = $app;
         $this->controllersDirectory = is_array($controllersDirectory) ? $controllersDirectory : [$controllersDirectory];
         $this->globalRoutePrefix = $globalRoutePrefix;
         $this->cacheDirectory = $cacheDirectory;
+        $this->controllersSuffix = $controllersSuffix;
 
         $routes = $this->getRoutes();
         $this->registerRoutes($routes);
@@ -101,7 +105,7 @@ class Router
         }
 
         $classes = array_filter(get_declared_classes(), function ($className) {
-            return preg_match('/Controller$/', $className);
+            return preg_match('/' . $this->controllersSuffix . '$/', $className);
         });
 
         $routes = $this->getRoutesFromClassNames($classes);
